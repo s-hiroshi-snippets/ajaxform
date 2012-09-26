@@ -42,7 +42,6 @@ jQuery(function($) {
         function setAddTextArea() {
             $('#add-textarea').click(function() {
                 factory.factory('textarea');
-                section.setFormOrderList();
             });
         }
 
@@ -52,7 +51,6 @@ jQuery(function($) {
         function setAddImage() {
             $('#add-image').click(function() {
                 factory.factory('image');
-                section.setFormOrderList();
             });
         }
 
@@ -62,7 +60,6 @@ jQuery(function($) {
         function setAddGroup() {
             $('#add-group').click(function() {
                 factory.factory('group');
-                section.setFormOrderList();
             });
         }
                 
@@ -86,7 +83,6 @@ jQuery(function($) {
                     closestForm.remove();
                     $('#' + id).val(value);
                     section.setMetaOrder();
-                    section.setFormOrderList();
 
                 }
 
@@ -113,8 +109,6 @@ jQuery(function($) {
                     closestForm.remove();
                     $('#' + id).val(value);
                     section.setMetaOrder();
-                    section.setFormOrderList();
-
                 }
 
                 return false;

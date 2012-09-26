@@ -34,6 +34,7 @@ jQuery(function($) {
          */
         function factory(type) {
             if (typeof FormType[type] !== "function") {
+                throw new Error('指定されたタイプがありません。')
                // throw new NotTypeException();
             }
             // タイプに応じて作成する。
@@ -80,7 +81,7 @@ jQuery(function($) {
             hiddenCreatedOrder.attr('value', formLength);
 
             hiddenMetaOrder.attr('type', 'hidden');
-            hiddenMetaOrder.attr('name', 'meta_order');
+            hiddenMetaOrder.attr('name', 'current_order');
             hiddenMetaOrder.attr('value', formLength);
 
             submit.attr('type', 'submit');
@@ -148,7 +149,7 @@ jQuery(function($) {
             hiddenCreatedOrder.attr('value', formLength);
 
             hiddenMetaOrder.attr('type', 'hidden');
-            hiddenMetaOrder.attr('name', 'meta_order');
+            hiddenMetaOrder.attr('name', 'current_order');
             hiddenMetaOrder.attr('value', formLength);
 
             file.attr('type', 'file');
