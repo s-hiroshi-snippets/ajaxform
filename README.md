@@ -32,18 +32,20 @@ PHPバージョン
 
 実装オブジェクトはApp.namespaceで管理する。
 
-* 実装オブジェクトは1つのファイルに１つの1オブジェクトを定義する
+* 実装オブジェクトは1つのファイルに１つの1オブジェクトを定義する。
 * 実装オブジェクトは疎結合にする。 
 * 実装オブジェクトの利用はmain.jsで行う。
 
-実装オブジェクトは下記パターンで記述(example.js)。
+### オブジェクトの実装
+
+実装オブジェクトはApp.namespaceメソッド(app.js)を使い下記のパターンで定義する(example.js)。
 
     jQuery(function() {
 
         /**
          * オブジェクトの実装パターンの例。
          */
-        var example = App.namespace('eample')
+        var example = App.namespace('example')
 
         // 実装の定義
         (function() {
@@ -64,16 +66,16 @@ PHPバージョン
 
     });
 
-* jQuery(function($) {})の変数スコープは閉じている。
+名前空間(App.namespace)とjQuery(fkkunction($) {})の変数スコープが閉じいることで
   + 上記パターンで変数の重複は起こらない。
   + シングルトンパターンを満たす。
-* パブリックな変数は使わない。
-  代わりにsetter/getterを提供する。
+
+パブリックな変数は使わない。代わりにset/getを提供する。
 
 
-実装オブジェクトの利用(main.js)
+### 実装オブジェクトの利用(main.js)
 
-実装オブジェクトはmain.jsでのみ利用する。
+実装オブジェクトはmain.jsから利用する。
 
     jQuery(function($) {
         var example = App.namespace('example');
@@ -91,9 +93,9 @@ PHPバージョン
 ----------
 
 App.namespaceは引数に指定されたオブジェクトが内部オブジェクトリストにあるときはそのオブジェクトを返す。
-ないときは新たに空オブジェクト{}を作成し内部オブジェクトリストに登録して返す。
+無いときは空オブジェクト{}を作成し内部オブジェクトリストに登録して返す。
 
-App.namespaceを使うことでオブジェクトを重複して定義するのを防ぐ。
+App.namespace使いオブジェクトをを防ぐ。
 
 
 構成
@@ -113,15 +115,14 @@ App.namespaceを使うことでオブジェクトを重複して定義するの�
 * form_transfer_controller.js
   サーバー通信のコントローラー。
     + 更新
-        - テキストデータのみajax.requestを使う(Ajax)。
+        - テキストデータのみ
+          Ajax通信を行う(ajax.request(ajax.js)。
         - 画像を含むmultipart/form-data
-          jQuery.uploadを使ったAjaxの擬似的な送受信。
-    + 削除
+          jQuery.uploadを使いsubmitイベントで疑似的なAjaxの送受信を行う。
 * form_factory.js
   FORM要素を作成する。
 * main.js
-  main処理。  
-  このファイル以外は疎結合。
+  メインスクリプト。
 
 
 注意点
